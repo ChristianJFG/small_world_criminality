@@ -1,2 +1,2 @@
-NetworkX
-Numpy
+networkx
+numpy
