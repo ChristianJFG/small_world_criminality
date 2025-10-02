@@ -144,7 +144,7 @@ def get_dynamics(graph, params, plot=False, hard_integration=False):
         return dydt.flatten()
     # Initial conditions
     np.random.seed(0)
-    y0 = np.random.uniform(0.01, 2, n * 2)
+    y0 = np.array([rho_ss, O_ss] * n) + np.random.uniform(-0.01, 0.01, n * 2) * np.array([rho_ss, O_ss] * n)
 
     # Time span
     t_span = (0, 1000)
