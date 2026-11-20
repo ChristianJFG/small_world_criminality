@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "turing-network-research"
+version = "0.1.0"
+description = "Reproducible spectral-network and reaction-diffusion research sample"
+requires-python = ">=3.10"
+dependencies = ["numpy>=1.26,<3", "scipy>=1.11,<2", "networkx>=3.2,<4", "pandas>=2.0,<3", "matplotlib>=3.8,<4"]
+
+[project.optional-dependencies]
+test = ["pytest>=8,<10"]
+
+[project.scripts]
+turing-research = "turing_networks.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

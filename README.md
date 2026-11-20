@@ -1,55 +1,57 @@
-# Spectral Localization and Turing Instabilities in Complex Networks
+# Turing patterns on complex networks
 
-**Christian Jesús Flores Gómez** — Graduate research in complexity science and nonlinear dynamics
+**Christian Jesús Flores Gómez** · Graduate research in complexity science and nonlinear dynamics
 
-> **Research sample for the Principles of Intelligence application.** Start with the [concise technical summary](research_sample/RESEARCH_SUMMARY.md), then inspect the [tested spectral example](research_sample/src/spectral_demo.py). The concise technical summary is readable directly on GitHub; a separate illustrated English PDF and LaTeX package has also been prepared for the application.
+This is a **clean, executable research implementation** of the methods behind my graduate project on network topology, Laplacian eigenmodes, eigenvector localization, and the potential emergence of diffusion-driven spatial patterns. It is intended as a concise technical sample for research applications.
 
-## Research question
+**Start here:** [Research question and findings](research/RESEARCH_SUMMARY.md).
 
-How does the topology of a complex network influence which Laplacian eigenmodes can become unstable in reaction–diffusion dynamics, and how spatially localized might the resulting patterns be?
+## Run from a clean environment
 
-The model is inspired by mathematical crime-hotspot formation but uses **synthetic network geometries**, not observed crime forecasting data.
-
-## Methods
-
-- Compare regular ring, square-lattice, and triangular-lattice topologies with added long-range shortcuts.
-- Compute the graph Laplacian under the convention **L = A − D**, its eigenvalues and eigenvectors.
-- Use linear-stability/dispersion analysis to identify the modes with positive growth rates.
-- Characterize eigenmode localization with the inverse participation ratio (IPR).
-- Analyze associations with node degree and local clustering.
-- Compare representative spectral predictions with nonlinear model integration.
-
-## Main findings
-
-1. Shortcuts modify spectral density while networks retain traces of their original geometry.
-2. Eigenvector localization varies strongly across the Laplacian spectrum; increasing shortcuts does **not** guarantee a more localized unstable mode.
-3. Different spectral regions have different topological supports. Modal degree and clustering associations depend on spectral position and base geometry.
-4. Pattern selection depends on an overlap between the dynamics' unstable spectral window and the eigenmodes actually supported by the graph.
-
-These findings describe spectral and linearized mechanisms. A critical eigenmode does not by itself establish the final nonlinear stationary pattern.
-
-## Where to start
-
-- [Technical research summary (English)](research_sample/RESEARCH_SUMMARY.md) — research question, equations, findings, limitations, and relevance.
-- [Minimal numerical example](research_sample/src/spectral_demo.py) — executable graph/Laplacian/IPR analysis with documented scope.
-- [Demo dependencies](research_sample/requirements_demo.txt)
-- [Original exploratory notebook: eigenvector vs final pattern](critical_eigenvector_vs_final_pattern_validation.ipynb)
-- [Original experimental pipeline](pipeline.ipynb)
-- [Original research functions](functions.py)
-
-The original notebooks are **research artifacts**, not a fully audited reproducibility package. In particular, a legacy dynamics function uses a hardcoded 16-node index range. The minimal example is intentionally separated from that code and does not claim to reproduce the manuscript's figures.
-
-Run the standalone example from the repository root:
+Python 3.10+:
 
 ```bash
-pip install -r research_sample/requirements_demo.txt
-python research_sample/src/spectral_demo.py --topology triangular --p 0.1 --seed 17 --output spectral_demo.csv
+python -m venv .venv
+source .venv/bin/activate        # Windows PowerShell: .venv\Scripts\Activate.ps1
+python -m pip install -e '.[test]'
+pytest -q
+
+# Rerun spectral experiments on three network geometries:
+turing-research sweep --output outputs/sweep
+
+# Run the *full nonlinear* two-variable system on one network:
+turing-research validate --topology ring --n 20 --p 0.2 --seed 2 \
+  --t-final 1200 --output outputs/validation
 ```
 
-The example exports spectral metrics for each graph eigenmode; no manuscript plots are recomputed.
+No download, private dataset, API key, or notebook-execution order is required. All sampled networks and perturbations are controlled by explicit seeds. For an even faster run, use `--seeds 1 --p 0 0.1` in `sweep`. The commands use the CPU only.
 
-## Research context
+## Files
 
-This is mathematical and computational research on emergent phenomena and collective dynamics, **not** a completed AI-safety, percolation, or mechanistic-interpretability study. Its relevance to Principles of Intelligence is methodological: spectral graph theory, critical-instability reasoning, numerical experimentation, and the study of how structure constrains emergent behavior.
+```text
+README.md
+pyproject.toml
+src/turing_networks/
+    __init__.py
+    core.py        # Graphs, Laplacian, IPR, linearized and nonlinear dynamics
+    cli.py         # Reproducible experiment commands and English figures
+tests/test_core.py # 9 automated tests, including numerical Jacobian check
+research/RESEARCH_SUMMARY.md
+```
 
-**Figures:** A separate three-page English PDF with original data and translated plot labels is available in the accompanying project package. No figures or datasets have been recomputed to make the translation.
+`outputs/sweep/` contains `graphs.csv`, `modes.csv`, four English-labeled PNG figures, and `run_metadata.json`. `outputs/validation/` contains a CSV of the finite-time nonlinear state, `validation.json`, dispersion and pattern-comparison figures, and metadata recording versions and inputs. Outputs are excluded from Git to avoid confusing generated results with source data.
+
+## Scientific scope and reproducibility
+
+- The graph convention is **L = A − D** (nonpositive Laplacian eigenvalues).
+- The original research considers **ring, square, and triangular** graphs with additional shortcuts, not bond percolation. The new code *reimplements* these geometric experiments, but individual graph-generation settings may differ from the original exploratory notebooks.
+- Model parameters are those used in the original numerical research; `validate` selects a diffusion parameter from a nonzero graph eigenvalue and sets the response parameter just beyond the analytic threshold, then runs SciPy's BDF integrator.
+- `sweep` calculates **new spectral figures from scratch**, rather than claiming to reproduce pixel-identical plots from the Spanish thesis. The manuscript's historical figures were translated separately and are not generated by this command.
+- The finite-time nonlinear endpoint is **not** automatically a proven equilibrium; `validation.json` reports a final-step relative-change diagnostic. An unstable linear eigenmode need not match the final saturated nonlinear pattern.
+- IPR is **basis-dependent inside a degenerate eigenspace**; repeated eigenvalues on symmetric regular graphs must be interpreted carefully.
+
+The original exploratory notebooks and a larger, less organized implementation remain preserved on the [original `master` branch](https://github.com/ChristianJFG/small_world_criminality/tree/master). This application branch deliberately contains only the curated, tested pipeline.
+
+## Why this matters to Principles of Intelligence
+
+The research applies mathematical theory and computational experimentation to understand how **underlying structural constraints influence collective behavior**. While this project is not itself mechanistic interpretability or AI-safety research, the transferable methods include spectral graph analysis, nonlinear stability, structured simulations, localization measures, and careful comparison of theoretical predictions against nonlinear outcomes.
