@@ -1,0 +1,90 @@
+\documentclass[10pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.69in,top=0.59in,bottom=0.60in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,microtype,amsmath,amssymb,graphicx,xcolor,hyperref,multicol}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\definecolor{blue}{HTML}{143B54}
+\definecolor{gray}{HTML}{4A5560}
+\hypersetup{colorlinks=true,urlcolor=blue,linkcolor=blue}
+\titleformat{\section}{\bfseries\color{blue}\large}{\thesection.}{.5em}{}
+\titlespacing*{\section}{0pt}{9pt}{4pt}
+\captionsetup{font=footnotesize,labelfont=bf,skip=3pt}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlist[itemize]{leftmargin=1.3em,itemsep=2pt,topsep=2pt}
+\pagestyle{fancy}\fancyhf{}\renewcommand{\headrulewidth}{0pt}
+\fancyfoot[C]{\color{gray}\footnotesize Christian J. Flores G\'omez \quad\textbullet\quad Research sample \quad\textbullet\quad \thepage}
+\begin{document}
+\begin{center}
+{\LARGE\bfseries Spectral Localization and Turing Instabilities\\[-2pt] in Shortcut-Enhanced Networks}\par
+\vspace{5pt}
+{\color{blue}\normalsize Selected graduate research in complexity science / nonlinear dynamics}\par
+\vspace{4pt}
+{\bfseries Christian Jes\'us Flores G\'omez}\quad $\vert$ \quad \href{https://github.com/ChristianJFG/small_world_criminality/tree/research-application-2026}{Research code and notes on GitHub}
+\end{center}
+\vspace{-5pt}
+\section*{Research question}
+How does network topology affect the onset and \emph{spatial localization} of emergent patterns in a coupled nonlinear system? I studied this question using a mathematical model of crime-related hotspot formation on synthetic transport-like networks. The aim was to isolate structural mechanisms, \emph{not} to predict crime from observed city data. In particular, I asked how adding long-range shortcuts alters the Laplacian eigenmodes that can support diffusion-driven instability.
+
+\section*{Mathematical approach}
+I compared three initially regular geometries: a ring, a square lattice, and a triangular lattice. In each case, Newman--Watts-style shortcuts were added with probability $p$ while preserving the original edges. This lets the analysis move from a regular structure toward small-world and increasingly shortcut-rich networks. For each realization, I calculated network statistics, the graph Laplacian and its eigensystem, and a dispersion relation for the linearized reaction--diffusion dynamics.
+
+Using the dynamical sign convention $L=A-D$ (so $\lambda_\alpha\leq 0$), I expanded perturbations around the homogeneous state in Laplacian eigenmodes, $L\phi^{(\alpha)}=\lambda_\alpha\phi^{(\alpha)}$. Their modal growth rates are determined by a $2\times 2$ stability matrix $M(\lambda_\alpha)$:
+\[
+\frac{d}{dt}\begin{pmatrix}a_\alpha\\b_\alpha\end{pmatrix}=M(\lambda_\alpha)\begin{pmatrix}a_\alpha\\b_\alpha\end{pmatrix},\qquad
+\eta_\alpha=\max\operatorname{Re}\operatorname{eig} M(\lambda_\alpha).
+\]
+A nonhomogeneous mode can grow when $\eta_\alpha>0$. To study \emph{where} that mode is concentrated, I used the inverse participation ratio (IPR), with $\mathrm{IPR}(\phi)=\sum_i\phi_i^4/(\sum_i\phi_i^2)^2$. Extended normalized modes have IPR near $1/N$; larger values indicate localization. I also measured eigenvector-weighted node degree and local clustering to characterize the modes' topological support.
+
+\section*{Finding 1: shortcuts reshape the available modes}
+The original regular structures produce distinct spectral-density peaks. Adding shortcuts broadens and smooths the eigenvalue distribution while retaining traces of the underlying geometry in the small-world regime (Fig.~\ref{fig:density}). Therefore, topology changes the \emph{available} discrete modes; the dynamics still determines which of those modes can grow. A high density of modes in an unstable spectral window creates more candidates for pattern formation, not a guarantee of a particular final pattern.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.48\linewidth]{figures_en/ring/density_ring.png}\hfill
+\includegraphics[width=.48\linewidth]{figures_en/triangular/density_triangular.png}
+\caption{Laplacian spectral density for ring-based (left) and triangular-lattice (right) networks as shortcuts increase. Curves have been freshly computed by the reproducible notebook-based pipeline using the manuscript sampling configuration (105 probabilities, 10 seeds, 200 nodes per geometry). These are smoothed finite-network spectra, not analytic singularities.}\label{fig:density}
+\end{figure}
+
+\newpage
+\section*{Finding 2: localized modes are not distributed uniformly across the spectrum}
+Shortcut-induced disorder produces regions of strong eigenvector localization, especially toward spectral edges; other modes remain comparatively extended (Fig.~\ref{fig:ipr}). The relationship is not monotonic in the shortcut probability: increasing the number of shortcuts does not automatically yield a more localized critical mode. Instead, the localization of the \emph{selected} pattern depends on whether the instability window overlaps a high-IPR spectral region.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.48\linewidth]{figures_en/ring/ipr_ring.png}\hfill
+\includegraphics[width=.48\linewidth]{figures_en/triangular/ipr_triangular.png}
+\caption{Mode localization (IPR) versus the Laplacian eigenvalue normalized by mean degree, for ring-based (left) and triangular-lattice (right) networks. Localized modes appear in specific spectral regions rather than uniformly across the spectrum.}\label{fig:ipr}
+\end{figure}
+
+\section*{Finding 3: the spectrum identifies different structural supports}
+Eigenvector-weighted degree distinguished high-connectivity supports from peripheral or lower-degree supports. Across the studied network families, modes toward the more-negative end of the spectrum tended to concentrate more strongly on higher-degree nodes, while modes closer to zero tended toward lower-degree support. The clustering-weighted comparison depended more strongly on the underlying geometry, particularly for square lattices, whose regular starting graph has no triangles.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=.47\linewidth]{figures_en/triangular/degree_regression_triangular.png}\hfill
+\includegraphics[width=.47\linewidth]{figures_en/triangular/clustering_regression_triangular.png}
+\caption{Triangular-network results: normalized eigenvector-weighted degree (left) and clustering (right) across the Laplacian spectrum. Quadratic trends were recalculated from newly generated eigenmode data using the original notebook regression specification. These associations do not establish the sign or amplitude of a nonlinear hotspot.}\label{fig:support}
+\end{figure}
+
+\newpage
+\section*{What I contributed and learned}
+My contribution combined analytical mode-based stability reasoning with Python-based network simulations and ensemble spectral analysis. I constructed/compared shortcut-enhanced network families, analyzed Laplacian eigenvalues and eigenvectors, and used IPR and mode-weighted topology metrics to interpret changes in potential hotspot localization. The manuscript also uses numerical integration of the nonlinear model in representative cases, while its broader comparisons emphasize spectral/linearized analysis.
+
+The central lesson was that network structure is \emph{not} merely a background for dynamics. It determines the spectral repertoire from which the instability selects modes. Conversely, topology alone is insufficient: the diffusion parameters and reaction kinetics determine which spectral region becomes unstable. In particular, the opportunity-diffusion parameter $d_O$ changes the unstable spectral window and can shift the likely spatial support of patterns.
+
+\section*{Limits and next step}
+This is a controlled synthetic-network study, not evidence that real-world crime hotspots are generated by Turing instabilities. The selected linear mode predicts the location of an initially growing perturbation; it need not reproduce the amplitude, sign, or persistent spatial organization of the fully nonlinear stationary state. The companion research branch now contains an executable Python pipeline reconstructed from the original ring, square, and triangular notebooks. All six figure panels in this report have been recomputed using the original 200-node, 105-probability, 10-seed sampling specification. They reproduce the original plot definitions, though exact pixel-for-pixel historical duplication is not claimed because raw archived experiment tables and library versions are unavailable.
+
+A natural next step would be to compare spectral predictions directly against nonlinear stationary patterns across topology and diffusion parameters, then extend the framework to empirical, weighted, or multilayer networks.
+
+\section*{Relevance to Principles of Intelligence}
+This project developed my experience with a research workflow that starts from a mathematical hypothesis about collective behavior, tests it computationally, and interprets the results through spectral and geometric structure. Although it does not study neural-network representations or percolation directly, I see a methodological connection to physics-informed interpretability: identifying how an underlying structure constrains the collective patterns a system can express. I would be interested in applying similar spectral and multiscale reasoning to synthetic-data hierarchies and learned representations.
+
+\vfill
+\noindent\color{gray}\footnotesize\textbf{Source and provenance.} Condensed from the author's Spanish-language LaTeX thesis draft, \emph{Efectos de la infraestructura urbana de transporte en los patrones espaciales de criminalidad}, Chapters 1--4 (project archive provided 20 Nov 2026). Figures recomputed from the original notebook algorithms and experiment settings, with English labels. The accompanying \href{https://github.com/ChristianJFG/small_world_criminality/tree/research-application-2026}{public GitHub research sample} includes the checked notebook-based pipeline, figure-generation commands, tests, and provenance notes. This document is a short research sample, not a peer-reviewed publication or a demonstration of empirical crime prediction.\par
+\end{document}
