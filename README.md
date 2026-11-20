@@ -2,7 +2,7 @@
 
 **Christian Jesús Flores Gómez** — Graduate research in complexity science and nonlinear dynamics
 
-> **Research sample for the Principles of Intelligence application.** Start with the [concise technical summary](research_sample/RESEARCH_SUMMARY.md), then inspect the [tested spectral example](research_sample/src/spectral_demo.py). The complete illustrated [English PDF and LaTeX project](https://github.com/ChristianJFG/small_world_criminality/tree/master) are being prepared as a separate package; the Markdown summary below is fully accessible here.
+> **Research sample for the Principles of Intelligence application.** Start with the [concise technical summary](research_sample/RESEARCH_SUMMARY.md), then inspect the [tested spectral example](research_sample/src/spectral_demo.py). The concise technical summary is readable directly on GitHub; a separate illustrated English PDF and LaTeX package has also been prepared for the application.
 
 ## Research question
 
@@ -38,6 +38,15 @@ These findings describe spectral and linearized mechanisms. A critical eigenmode
 - [Original research functions](functions.py)
 
 The original notebooks are **research artifacts**, not a fully audited reproducibility package. In particular, a legacy dynamics function uses a hardcoded 16-node index range. The minimal example is intentionally separated from that code and does not claim to reproduce the manuscript's figures.
+
+Run the standalone example from the repository root:
+
+```bash
+pip install -r research_sample/requirements_demo.txt
+python research_sample/src/spectral_demo.py --topology triangular --p 0.1 --seed 17 --output spectral_demo.csv
+```
+
+The example exports spectral metrics for each graph eigenmode; no manuscript plots are recomputed.
 
 ## Research context
 
