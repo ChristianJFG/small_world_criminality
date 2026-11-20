@@ -64,7 +64,7 @@ def sweep(args: argparse.Namespace) -> None:
         ax.legend(markerscale=2, fontsize=8, ncol=2)
         ax.grid(alpha=0.2)
         fig.tight_layout()
-        fig.savefig(destination / filename, dpi=160)
+        fig.savefig(destination / (Path(filename).stem + "." + args.format), dpi=160)
         plt.close(fig)
 
     fig, ax = plt.subplots(figsize=(9, 5))
@@ -77,7 +77,7 @@ def sweep(args: argparse.Namespace) -> None:
     ax.set_ylabel("Estimated spectral density")
     ax.legend(fontsize=8, ncol=2)
     fig.tight_layout()
-    fig.savefig(destination / "spectral_density.png", dpi=160)
+    fig.savefig(destination / ("spectral_density." + args.format), dpi=160)
     plt.close(fig)
     print(f"Saved {len(graphs)} graph realizations and {len(modes)} eigenmodes to {destination}")
 
@@ -144,6 +144,8 @@ def main() -> None:
     s.add_argument("--seeds", type=int, default=3)
     s.add_argument("--n", type=int, default=36, help="Ring size")
     s.add_argument("--side", type=int, default=6, help="Lattice side parameter")
+    s.add_argument("--format", choices=["png", "svg"], default="png",
+                   help="Plot format; SVG makes GitHub-friendly vector graphics")
     s.add_argument("--output", default="outputs/sweep")
     v = sub.add_parser("validate", help="Compare linear mode with finite-time nonlinear integration")
     v.add_argument("--topology", choices=["ring", "square", "triangular"], default="ring")

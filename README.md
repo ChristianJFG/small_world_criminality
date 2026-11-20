@@ -39,7 +39,7 @@ tests/test_core.py # 9 automated tests, including numerical Jacobian check
 research/RESEARCH_SUMMARY.md
 ```
 
-`outputs/sweep/` contains `graphs.csv`, `modes.csv`, four English-labeled PNG figures, and `run_metadata.json`. `outputs/validation/` contains a CSV of the finite-time nonlinear state, `validation.json`, dispersion and pattern-comparison figures, and metadata recording versions and inputs. Outputs are excluded from Git to avoid confusing generated results with source data.
+`outputs/sweep/` contains `graphs.csv`, `modes.csv`, four English-labeled PNG figures (or SVG with `--format svg`), and `run_metadata.json`. `outputs/validation/` contains a CSV of the finite-time nonlinear state, `validation.json`, dispersion and pattern-comparison figures, and metadata recording versions and inputs. Outputs are excluded from Git to avoid confusing generated results with source data.
 
 ## Scientific scope and reproducibility
 
@@ -55,3 +55,18 @@ The original exploratory notebooks and a larger, less organized implementation r
 ## Why this matters to Principles of Intelligence
 
 The research applies mathematical theory and computational experimentation to understand how **underlying structural constraints influence collective behavior**. While this project is not itself mechanistic interpretability or AI-safety research, the transferable methods include spectral graph analysis, nonlinear stability, structured simulations, localization measures, and careful comparison of theoretical predictions against nonlinear outcomes.
+
+## Published demonstration figures
+
+The two charts below come from a **fresh, seeded mini-sweep**, not from digitizing or translating the thesis plots. They can be regenerated with:
+
+```bash
+turing-research sweep --topologies ring --p 0 0.5 --seeds 1 \
+  --n 36 --format svg --output outputs/sample
+```
+
+![Spectral density example](examples/sample/spectral_density.svg)
+
+![Inverse participation ratio example](examples/sample/ipr_vs_eigenvalue.svg)
+
+[CSV mode measurements](examples/sample/modes.csv) · [Graph metadata](examples/sample/graphs.csv) · [Run configuration](examples/sample/run_metadata.json)

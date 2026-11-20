@@ -1,0 +1,27 @@
+{
+  "command": "sweep",
+  "config": {
+    "command": "sweep",
+    "topologies": [
+      "ring"
+    ],
+    "p": [
+      0.0,
+      0.5
+    ],
+    "seeds": 1,
+    "n": 36,
+    "side": 6,
+    "format": "svg",
+    "output": "outputs/sample"
+  },
+  "versions": {
+    "python": "3.13.5",
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "networkx": "3.6.1",
+    "pandas": "2.2.3",
+    "matplotlib": "3.10.8"
+  },
+  "provenance": "Newly computed figures; not original thesis data."
+}
