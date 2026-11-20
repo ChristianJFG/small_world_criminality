@@ -8,29 +8,31 @@ How do network topology and long-range shortcuts influence the onset and spatial
 
 ## Mathematical formulation
 
-Let (A) be the adjacency matrix, (D) the diagonal degree matrix, and (L=A-D) the negative-semidefinite graph Laplacian. Its eigenpairs satisfy
+Let $A$ be the adjacency matrix, $D$ the diagonal degree matrix, and $L=A-D$ the negative-semidefinite graph Laplacian. Its eigenpairs satisfy
 
-[
-Lphi_alpha=lambda_alphaphi_alpha,qquad lambda_alphaleq 0.
-]
+$$
+L\phi_\alpha=\lambda_\alpha\phi_\alpha,\qquad \lambda_\alpha\le 0.
+$$
 
 By linearizing the two-variable dynamics about a homogeneous state and expanding perturbations into Laplacian eigenmodes, the evolution of the modal coefficients satisfies
 
-[
-rac{d}{dt}egin{pmatrix}a_alpha\\b_alphaend{pmatrix}
-  =M(lambda_alpha)egin{pmatrix}a_alpha\\b_alphaend{pmatrix}.
-]
+$$
+\frac{d}{dt}
+\begin{pmatrix}a_\alpha\\b_\alpha\end{pmatrix}
+=M(\lambda_\alpha)
+\begin{pmatrix}a_\alpha\\b_\alpha\end{pmatrix}.
+$$
 
-A mode can grow when the maximum real part of an eigenvalue of (M(lambda_alpha)) is positive. Thus the network supplies the *discrete modes*, while the kinetic and diffusion parameters determine the *unstable spectral window*.
+A mode can grow when the maximum real part of an eigenvalue of $M(\lambda_\alpha)$ is positive. Thus the network supplies the *discrete modes*, while the kinetic and diffusion parameters determine the *unstable spectral window*.
 
 For each eigenvector, I evaluated the inverse participation ratio,
 
-[
-mathrm{IPR}(phi)=
-rac{sum_i|phi_i|^4}{left(sum_i|phi_i|^2ight)^2}.
-]
+$$
+\mathrm{IPR}(\phi)=
+\frac{\sum_i|\phi_i|^4}{\left(\sum_i|\phi_i|^2\right)^2}.
+$$
 
-For a normalized mode distributed evenly over (N) nodes, IPR is approximately (1/N); a mode concentrated on few nodes has higher IPR.
+For a normalized mode distributed evenly over $N$ nodes, IPR is approximately $1/N$; a mode concentrated on few nodes has higher IPR.
 
 ## Computational approach
 
