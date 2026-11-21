@@ -4,7 +4,8 @@ Reconstructs the figure pipeline from the ring, square, and triangular network n
 
 - `src/turing_thesis/`: graph generation, spectral analysis, simulations, and plots
 - `tests/`: reproduction checks
-- `paper/Christian_Flores_Turing_Reproduced_Report.pdf`: report
+- [Visual introduction (PDF)](paper/Turing_Patterns_on_Networks.pdf)
+- [Technical report (PDF)](paper/Christian_Flores_Turing_Reproduced_Report.pdf)
 
 Install and run:
 
