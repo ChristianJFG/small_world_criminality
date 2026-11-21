@@ -1,0 +1,21 @@
+# Run: uv run --locked python -m turing_thesis --config config.toml
+# CLI options override this file. Relative output paths start at this directory.
+preset = "quick"                         # quick or manuscript
+topologies = ["ring", "square", "triangular"]
+nodes = 200                              # must fit all selected lattices
+seeds = 2                                # graph realizations per probability
+seed_start = 0                           # uses consecutive integer seeds
+ring_k = 4                               # positive even degree, less than nodes
+output = "results"
+format = "png"                           # png, svg, pdf
+
+# Optional quick sampling: points PER REGION for ring/triangular,
+# total points for square. Omit to retain historical quick defaults.
+# p_points = 3
+
+# Optional exact probabilities override preset sampling for each topology.
+# Values must be distinct and in [0, 1]. Omit to use historical grids.
+# [probabilities]
+# ring = [0.0, 0.1, 1.0]
+# square = [0.0001, 0.01, 0.1, 1.0]
+# triangular = [0.0, 0.05, 1.0]

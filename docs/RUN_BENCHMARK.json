@@ -1,0 +1,131 @@
+{
+  "measured_date": "2026-11-21",
+  "environment": "CPython 3.10.12, Linux x86_64, single-thread OpenBLAS/OMP; see uv.lock and per-run metadata",
+  "timing_method": "Sum of started_utc to completed_utc per topology, including tables and plots. Excludes interpreter startup and uv sync. Not a performance guarantee.",
+  "runs": {
+    "quick": {
+      "local_run": "results/uv-check",
+      "graph_count": 50,
+      "mode_count": 10000,
+      "topology_seconds": {
+        "ring": 1.119971,
+        "square": 0.946983,
+        "triangular": 1.07546
+      },
+      "total_topology_seconds": 3.142414,
+      "total_bytes": 2819719,
+      "bytes_by_extension": {
+        ".csv": 1643181,
+        ".png": 1151370,
+        ".json": 23743,
+        ".toml": 1425
+      },
+      "code_sha256": {
+        "ring": {
+          ".python-version": "59cd171bfba8dfdcbe3343f94efd5294eb6c2298fe7afad8da1d54834089d7dc",
+          "pyproject.toml": "b1f7ec8829184760bbf7f40a8f3fb52d38b7b6d6879427526b8bd322c5bff49a",
+          "requirements-reproducible.txt": "c9a89507271b6690334580d77caabce5ffd6ed2a9c0618221eaf19acd9e19a23",
+          "src/turing_thesis/__init__.py": "87364793fa1454a384c3611e5a1b96943aa465b7c4d33303765b19087ad0b432",
+          "src/turing_thesis/__main__.py": "ab924a1c37b07299c09b790ef1a978d45dfca582f72b848dfc3c619c036ef69c",
+          "src/turing_thesis/config.py": "bbddf3c87767f991d5ebdf29040797cffd5ee22eeb245e845af8e16de96ed283",
+          "src/turing_thesis/dynamics.py": "a1b6cc3239831e3b2e7dcda80b92ec5922e43e8b1fd03cb69e3c437df272b01b",
+          "src/turing_thesis/experiments.py": "329f5f809c0182ca8b0b191b4e4ba1ccda8859563414db65630d1d5f7405c8f8",
+          "src/turing_thesis/networks.py": "89ba5a252f0b10548792adf2b2f6853a351fd330d00cc69c72d83a920b112bed",
+          "src/turing_thesis/plots.py": "4b7da06763eff721f27df217b64513e272242dc291b5eea256422e5728cca481",
+          "src/turing_thesis/provenance.py": "e3e09348f0b91f950623937139e8cec369ddc07a8ba22b84e33fe9d333f3bcde",
+          "src/turing_thesis/spectral.py": "bf15d112c5388d11a21af8735541c7024dadddca17573d73343d90bdd18db1c0",
+          "uv.lock": "577327e9121e2a9529c801e7c408f7e5efa7754ec9343f3e1f2158f4011f9285"
+        },
+        "square": {
+          ".python-version": "59cd171bfba8dfdcbe3343f94efd5294eb6c2298fe7afad8da1d54834089d7dc",
+          "pyproject.toml": "b1f7ec8829184760bbf7f40a8f3fb52d38b7b6d6879427526b8bd322c5bff49a",
+          "requirements-reproducible.txt": "c9a89507271b6690334580d77caabce5ffd6ed2a9c0618221eaf19acd9e19a23",
+          "src/turing_thesis/__init__.py": "87364793fa1454a384c3611e5a1b96943aa465b7c4d33303765b19087ad0b432",
+          "src/turing_thesis/__main__.py": "ab924a1c37b07299c09b790ef1a978d45dfca582f72b848dfc3c619c036ef69c",
+          "src/turing_thesis/config.py": "bbddf3c87767f991d5ebdf29040797cffd5ee22eeb245e845af8e16de96ed283",
+          "src/turing_thesis/dynamics.py": "a1b6cc3239831e3b2e7dcda80b92ec5922e43e8b1fd03cb69e3c437df272b01b",
+          "src/turing_thesis/experiments.py": "329f5f809c0182ca8b0b191b4e4ba1ccda8859563414db65630d1d5f7405c8f8",
+          "src/turing_thesis/networks.py": "89ba5a252f0b10548792adf2b2f6853a351fd330d00cc69c72d83a920b112bed",
+          "src/turing_thesis/plots.py": "4b7da06763eff721f27df217b64513e272242dc291b5eea256422e5728cca481",
+          "src/turing_thesis/provenance.py": "e3e09348f0b91f950623937139e8cec369ddc07a8ba22b84e33fe9d333f3bcde",
+          "src/turing_thesis/spectral.py": "bf15d112c5388d11a21af8735541c7024dadddca17573d73343d90bdd18db1c0",
+          "uv.lock": "577327e9121e2a9529c801e7c408f7e5efa7754ec9343f3e1f2158f4011f9285"
+        },
+        "triangular": {
+          ".python-version": "59cd171bfba8dfdcbe3343f94efd5294eb6c2298fe7afad8da1d54834089d7dc",
+          "pyproject.toml": "b1f7ec8829184760bbf7f40a8f3fb52d38b7b6d6879427526b8bd322c5bff49a",
+          "requirements-reproducible.txt": "c9a89507271b6690334580d77caabce5ffd6ed2a9c0618221eaf19acd9e19a23",
+          "src/turing_thesis/__init__.py": "87364793fa1454a384c3611e5a1b96943aa465b7c4d33303765b19087ad0b432",
+          "src/turing_thesis/__main__.py": "ab924a1c37b07299c09b790ef1a978d45dfca582f72b848dfc3c619c036ef69c",
+          "src/turing_thesis/config.py": "bbddf3c87767f991d5ebdf29040797cffd5ee22eeb245e845af8e16de96ed283",
+          "src/turing_thesis/dynamics.py": "a1b6cc3239831e3b2e7dcda80b92ec5922e43e8b1fd03cb69e3c437df272b01b",
+          "src/turing_thesis/experiments.py": "329f5f809c0182ca8b0b191b4e4ba1ccda8859563414db65630d1d5f7405c8f8",
+          "src/turing_thesis/networks.py": "89ba5a252f0b10548792adf2b2f6853a351fd330d00cc69c72d83a920b112bed",
+          "src/turing_thesis/plots.py": "4b7da06763eff721f27df217b64513e272242dc291b5eea256422e5728cca481",
+          "src/turing_thesis/provenance.py": "e3e09348f0b91f950623937139e8cec369ddc07a8ba22b84e33fe9d333f3bcde",
+          "src/turing_thesis/spectral.py": "bf15d112c5388d11a21af8735541c7024dadddca17573d73343d90bdd18db1c0",
+          "uv.lock": "577327e9121e2a9529c801e7c408f7e5efa7754ec9343f3e1f2158f4011f9285"
+        }
+      }
+    },
+    "manuscript": {
+      "local_run": "results/reproducibility-manuscript",
+      "graph_count": 3150,
+      "mode_count": 630000,
+      "topology_seconds": {
+        "ring": 18.839146,
+        "square": 17.452122,
+        "triangular": 33.169845
+      },
+      "total_topology_seconds": 69.46111300000001,
+      "total_bytes": 109384183,
+      "bytes_by_extension": {
+        ".csv": 107969955,
+        ".png": 1320838,
+        ".json": 73257,
+        ".toml": 20133
+      },
+      "code_sha256": {
+        "ring": {
+          "pyproject.toml": "b1f7ec8829184760bbf7f40a8f3fb52d38b7b6d6879427526b8bd322c5bff49a",
+          "requirements-reproducible.txt": "c9a89507271b6690334580d77caabce5ffd6ed2a9c0618221eaf19acd9e19a23",
+          "src/turing_thesis/__init__.py": "87364793fa1454a384c3611e5a1b96943aa465b7c4d33303765b19087ad0b432",
+          "src/turing_thesis/__main__.py": "ab924a1c37b07299c09b790ef1a978d45dfca582f72b848dfc3c619c036ef69c",
+          "src/turing_thesis/config.py": "bbddf3c87767f991d5ebdf29040797cffd5ee22eeb245e845af8e16de96ed283",
+          "src/turing_thesis/dynamics.py": "a1b6cc3239831e3b2e7dcda80b92ec5922e43e8b1fd03cb69e3c437df272b01b",
+          "src/turing_thesis/experiments.py": "329f5f809c0182ca8b0b191b4e4ba1ccda8859563414db65630d1d5f7405c8f8",
+          "src/turing_thesis/networks.py": "89ba5a252f0b10548792adf2b2f6853a351fd330d00cc69c72d83a920b112bed",
+          "src/turing_thesis/plots.py": "4b7da06763eff721f27df217b64513e272242dc291b5eea256422e5728cca481",
+          "src/turing_thesis/provenance.py": "4a93daf414fda6cec5280fbde923208ab3d96fbc64a882fd137271d499a8cab1",
+          "src/turing_thesis/spectral.py": "bf15d112c5388d11a21af8735541c7024dadddca17573d73343d90bdd18db1c0"
+        },
+        "square": {
+          "pyproject.toml": "b1f7ec8829184760bbf7f40a8f3fb52d38b7b6d6879427526b8bd322c5bff49a",
+          "requirements-reproducible.txt": "c9a89507271b6690334580d77caabce5ffd6ed2a9c0618221eaf19acd9e19a23",
+          "src/turing_thesis/__init__.py": "87364793fa1454a384c3611e5a1b96943aa465b7c4d33303765b19087ad0b432",
+          "src/turing_thesis/__main__.py": "ab924a1c37b07299c09b790ef1a978d45dfca582f72b848dfc3c619c036ef69c",
+          "src/turing_thesis/config.py": "bbddf3c87767f991d5ebdf29040797cffd5ee22eeb245e845af8e16de96ed283",
+          "src/turing_thesis/dynamics.py": "a1b6cc3239831e3b2e7dcda80b92ec5922e43e8b1fd03cb69e3c437df272b01b",
+          "src/turing_thesis/experiments.py": "329f5f809c0182ca8b0b191b4e4ba1ccda8859563414db65630d1d5f7405c8f8",
+          "src/turing_thesis/networks.py": "89ba5a252f0b10548792adf2b2f6853a351fd330d00cc69c72d83a920b112bed",
+          "src/turing_thesis/plots.py": "4b7da06763eff721f27df217b64513e272242dc291b5eea256422e5728cca481",
+          "src/turing_thesis/provenance.py": "4a93daf414fda6cec5280fbde923208ab3d96fbc64a882fd137271d499a8cab1",
+          "src/turing_thesis/spectral.py": "bf15d112c5388d11a21af8735541c7024dadddca17573d73343d90bdd18db1c0"
+        },
+        "triangular": {
+          "pyproject.toml": "b1f7ec8829184760bbf7f40a8f3fb52d38b7b6d6879427526b8bd322c5bff49a",
+          "requirements-reproducible.txt": "c9a89507271b6690334580d77caabce5ffd6ed2a9c0618221eaf19acd9e19a23",
+          "src/turing_thesis/__init__.py": "87364793fa1454a384c3611e5a1b96943aa465b7c4d33303765b19087ad0b432",
+          "src/turing_thesis/__main__.py": "ab924a1c37b07299c09b790ef1a978d45dfca582f72b848dfc3c619c036ef69c",
+          "src/turing_thesis/config.py": "bbddf3c87767f991d5ebdf29040797cffd5ee22eeb245e845af8e16de96ed283",
+          "src/turing_thesis/dynamics.py": "a1b6cc3239831e3b2e7dcda80b92ec5922e43e8b1fd03cb69e3c437df272b01b",
+          "src/turing_thesis/experiments.py": "329f5f809c0182ca8b0b191b4e4ba1ccda8859563414db65630d1d5f7405c8f8",
+          "src/turing_thesis/networks.py": "89ba5a252f0b10548792adf2b2f6853a351fd330d00cc69c72d83a920b112bed",
+          "src/turing_thesis/plots.py": "4b7da06763eff721f27df217b64513e272242dc291b5eea256422e5728cca481",
+          "src/turing_thesis/provenance.py": "4a93daf414fda6cec5280fbde923208ab3d96fbc64a882fd137271d499a8cab1",
+          "src/turing_thesis/spectral.py": "bf15d112c5388d11a21af8735541c7024dadddca17573d73343d90bdd18db1c0"
+        }
+      }
+    }
+  }
+}

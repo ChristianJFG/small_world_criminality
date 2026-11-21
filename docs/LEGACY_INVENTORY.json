@@ -1,0 +1,95 @@
+{
+  "note": "Local preservation inventory, not a remote backup. These files are ignored and not included in a clone. Original files were moved without changing contents.",
+  "files": [
+    {
+      "original_path": "critical_eigenvector_final_pattern_validation_results.csv",
+      "local_path": "local/legacy/data/critical_eigenvector_final_pattern_validation_results.csv",
+      "bytes": 5216,
+      "sha256": "c8ed57dc0c4d701f077f40e17aa3d9383661feacfa0821fcf34f5715d591cf5c"
+    },
+    {
+      "original_path": "critical_eigenvector_final_pattern_validation_results_200_nodes.csv",
+      "local_path": "local/legacy/data/critical_eigenvector_final_pattern_validation_results_200_nodes.csv",
+      "bytes": 93034,
+      "sha256": "0928f5329d06ca154c801e29bc2b8d285afb91cc30ba2686e825e1d98129fd01"
+    },
+    {
+      "original_path": "critical_eigenvector_final_pattern_validation_results_20_nodes.csv",
+      "local_path": "local/legacy/data/critical_eigenvector_final_pattern_validation_results_20_nodes.csv",
+      "bytes": 89123,
+      "sha256": "f37f65a66a8efdf87a96478e057ff11f53767b1078447f92f85d44f906a02dd9"
+    },
+    {
+      "original_path": "critical_eigenvector_final_pattern_validation_results_20_nodes_p_51.csv",
+      "local_path": "local/legacy/data/critical_eigenvector_final_pattern_validation_results_20_nodes_p_51.csv",
+      "bytes": 186610,
+      "sha256": "998992873a101d539c9fc4e99f43a7c5eac50c68c1a199c66e259e628e9be960"
+    },
+    {
+      "original_path": "critical_eigenvector_vs_final_pattern_validation.html",
+      "local_path": "local/legacy/figures/critical_eigenvector_vs_final_pattern_validation.html",
+      "bytes": 1183059,
+      "sha256": "ac273579e07f123f43eb70a8645b49486e03bfd9d90e6101e5da0ca272b590a9"
+    },
+    {
+      "original_path": "experiment_data_200nodes_4neighbors_50experiments_8samples_2026-03-15_21-37-31.csv",
+      "local_path": "local/legacy/data/experiment_data_200nodes_4neighbors_50experiments_8samples_2026-03-15_21-37-31.csv",
+      "bytes": 343770790,
+      "sha256": "f71e6b9b7b6c36bd542b9b00d6c1f2896a3c1fe07e5f9a05756715eb8758699f"
+    },
+    {
+      "original_path": "experiment_data_200nodes_4neighbors_50experiments_8samples_2026-03-16_08-50-32.csv",
+      "local_path": "local/legacy/data/experiment_data_200nodes_4neighbors_50experiments_8samples_2026-03-16_08-50-32.csv",
+      "bytes": 343767709,
+      "sha256": "53ae83f536cb6c5764066896fec131525ab9c6e90126e6a47456a01ebaa321e4"
+    },
+    {
+      "original_path": "output.png",
+      "local_path": "local/legacy/figures/output.png",
+      "bytes": 714663,
+      "sha256": "e35466e7ad62f6b061d815f6acb4448e85294351c972b96f5b925d07db1a7c4c"
+    },
+    {
+      "original_path": "pipeline_2.ipynb",
+      "local_path": "local/legacy/notebooks/pipeline_2.ipynb",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original_path": "ring.html",
+      "local_path": "local/legacy/figures/ring.html",
+      "bytes": 1901945,
+      "sha256": "6a716db13e4d27c87fcf39d9f91079733fb32401f715ecbc68459d876218a233"
+    },
+    {
+      "original_path": "square.html",
+      "local_path": "local/legacy/figures/square.html",
+      "bytes": 3297988,
+      "sha256": "64a8d64a737a3e7621547fb6bbeaf7b1df4681be432ad40b1cfe60b4790b4d49"
+    },
+    {
+      "original_path": "square.png",
+      "local_path": "local/legacy/figures/square.png",
+      "bytes": 41716,
+      "sha256": "e9cfb97095d7f011f60912a540314b8d968cece64fcf7b4b81831ea87b790f28"
+    },
+    {
+      "original_path": "triangular.html",
+      "local_path": "local/legacy/figures/triangular.html",
+      "bytes": 2170028,
+      "sha256": "8369026395866745eb927a83fa39d3f49b91e2e44334fa854fcafdfbd8201e04"
+    },
+    {
+      "original_path": ".codex_repo_inspect.py",
+      "local_path": "local/legacy/tools/.codex_repo_inspect.py",
+      "bytes": 1712,
+      "sha256": "f5bd59443370805b293b459df85bff4dcd5a168a7ed0bee6e85577d1ce296152"
+    },
+    {
+      "original_path": "requirements-reproducible.txt",
+      "local_path": "local/legacy/environment/requirements-reproducible.txt",
+      "bytes": 514,
+      "sha256": "c9a89507271b6690334580d77caabce5ffd6ed2a9c0618221eaf19acd9e19a23"
+    }
+  ]
+}

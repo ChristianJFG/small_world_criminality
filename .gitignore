@@ -1,6 +1,42 @@
-__pycache__/
-.pytest_cache/
-*.egg-info/
+# Recreated by uv / Python (keep uv.lock and .python-version tracked).
 .venv/
-results/
-*.pyc
+.venv-*/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+/build/
+/dist/
+
+# Reproducible run tables, figures, snapshots and logs.
+# Never ignore all CSV/image extensions: future input data/fixtures may need Git.
+/results/
+
+# Preserved historical experiments and personal scratch work; not a backup.
+/local/
+.ipynb_checkpoints/
+
+# Generated pip export; uv.lock is the authoritative dependency resolution.
+/requirements-export.txt
+
+# LaTeX intermediates; the curated final PDFs in paper/ stay tracked.
+/paper/research_report.pdf
+/paper/*.aux
+/paper/*.log
+/paper/*.out
+/paper/*.toc
+/paper/*.fls
+/paper/*.fdb_latexmk
+/paper/*.synctex.gz
+
+# Machine-specific settings and secrets.
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db

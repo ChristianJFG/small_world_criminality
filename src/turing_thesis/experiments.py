@@ -4,7 +4,6 @@ Source notebooks: ring.ipynb (cells 14,15,22-31), square.ipynb (cells
 15,16,23-32), triangular.ipynb (cells 15,16,23-32).
 """
 from __future__ import annotations
-from dataclasses import dataclass
 import numpy as np
 import pandas as pd
 import networkx as nx
@@ -19,6 +18,10 @@ P_REGIONS={
 
 
 def historical_p_values(topology:str,n_experiments:int=105)->np.ndarray:
+    from .config import integer
+    integer('n_experiments', n_experiments, 1)
+    if topology in ('ring', 'triangular') and n_experiments % 3:
+        raise ValueError('n_experiments must be a multiple of 3 for ring/triangular')
     if topology=='ring':
         g=n_experiments//3
         return np.concatenate([np.linspace(0,.01,g),np.linspace(.09,.2,g),np.linspace(.9,1.,g)])
@@ -58,32 +61,50 @@ def run_one(topology:str,n:int,p:float,seed:int,ring_k:int=4)->tuple[dict,list[d
     return graph_row,rows
 
 
-def run_sweep(topology:str,preset:str='quick',n:int=200,seeds:int|None=None,
-              p_points:int|None=None,ring_k:int=4,progress:bool=False)->tuple[pd.DataFrame,pd.DataFrame]:
-    if preset not in ('quick','manuscript'):
+def sweep_probabilities(topology, preset='quick', p_points=None, p_values=None):
+    from .config import integer, validate_probabilities
+    if preset not in ('quick', 'manuscript'):
         raise ValueError(preset)
-    # full = actual notebook sample sizes; quick = subset of same historical p grids
-    historical=historical_p_values(topology,105)
-    if preset=='manuscript':
-        p_values=historical
-        seeds=10 if seeds is None else seeds
-    else:
-        pp=3 if p_points is None else p_points
-        if pp<1:raise ValueError('p_points must be >=1')
-        if topology in ('ring','triangular'):
-            # select original grid positions within each three-regime block
-            blocks=np.array_split(historical,3)
-            p_values=np.concatenate([b[np.linspace(0,len(b)-1,pp).astype(int)] for b in blocks])
-        else:
-            # quick sample chosen from historical p grid, spanning three threshold regimes
-            target=np.array([1e-4,.002,.01,.1,.35,.8,1.])
-            p_values=historical[np.unique(np.abs(historical[:,None]-target).argmin(axis=0))]
-        seeds=2 if seeds is None else seeds
-    graph_rows, mode_rows=[],[]
-    total=len(p_values)*seeds
-    for idx,p in enumerate(p_values):
-        for seed in range(seeds):
-            if progress:print(f'{topology}: {idx*seeds+seed+1}/{total} (p={p:.5g}, seed={seed})',flush=True)
-            g,rows=run_one(topology,n,float(p),seed,ring_k)
-            graph_rows.append(g);mode_rows.extend(rows)
-    return pd.DataFrame(graph_rows),pd.DataFrame(mode_rows)
+    historical = historical_p_values(topology, 105)
+    if p_points is not None:
+        integer('p_points', p_points, 1)
+        if preset != 'quick':
+            raise ValueError('p_points applies only to the quick preset')
+        limit = 105 if topology == 'square' else 35
+        if p_points > limit:
+            raise ValueError(f'p_points must be <= {limit}')
+    if p_values is not None:
+        validate_probabilities(p_values)
+        return np.asarray(p_values, dtype=float)
+    if preset == 'manuscript':
+        return historical
+    if topology in ('ring', 'triangular'):
+        pp = 3 if p_points is None else p_points
+        return np.concatenate([b[np.linspace(0, len(b)-1, pp).astype(int)]
+                               for b in np.array_split(historical, 3)])
+    if p_points is not None:
+        return historical[np.linspace(0, len(historical)-1, p_points).astype(int)]
+    target = np.array([1e-4, .002, .01, .1, .35, .8, 1.])
+    return historical[np.unique(np.abs(historical[:, None]-target).argmin(axis=0))]
+
+
+def run_sweep(topology: str, preset: str='quick', n: int=200, seeds: int | None=None,
+              p_points: int | None=None, ring_k: int=4, progress: bool=False,
+              seed_start: int=0, p_values: list[float] | None=None) -> tuple[pd.DataFrame, pd.DataFrame]:
+    from .config import ExperimentConfig
+    config = ExperimentConfig(preset=preset, topologies=[topology], nodes=n,
+                              seeds=seeds, seed_start=seed_start, ring_k=ring_k,
+                              p_points=p_points,
+                              probabilities={} if p_values is None else {topology: p_values}).validate()
+    probabilities = sweep_probabilities(topology, preset, p_points, p_values)
+    graph_rows, mode_rows = [], []
+    total = len(probabilities) * config.seed_count
+    for idx, p in enumerate(probabilities):
+        for offset in range(config.seed_count):
+            seed = seed_start + offset
+            if progress:
+                print(f'{topology}: {idx*config.seed_count+offset+1}/{total} (p={p:.5g}, seed={seed})', flush=True)
+            g, rows = run_one(topology, n, float(p), seed, ring_k)
+            graph_rows.append(g)
+            mode_rows.extend(rows)
+    return pd.DataFrame(graph_rows), pd.DataFrame(mode_rows)

@@ -7,7 +7,7 @@ name = "turing-thesis-reproduction"
 version = "0.2.0"
 description = "Notebook-faithful reproducibility pipeline for Turing pattern and Laplacian mode figures"
 requires-python = ">=3.10"
-dependencies = ["numpy>=1.26", "scipy>=1.11", "networkx>=3.2", "pandas>=2.0", "matplotlib>=3.7", "seaborn>=0.13"]
+dependencies = ["numpy>=1.26", "scipy>=1.11", "networkx>=3.2", "pandas>=2.0", "matplotlib>=3.7", "seaborn>=0.13", "tomli>=2; python_version < '3.11'"]
 
 [project.optional-dependencies]
 test = ["pytest>=8"]
